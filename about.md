@@ -4,12 +4,18 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+ねこ好き
 
-### More Information
+Golang 好き
 
-A place to include any other types of information that you'd like to include about yourself.
+物作り好き
 
-### Contact me
+テックニック好き
 
-[email@domain.com](mailto:email@domain.com)
+釣りが好き
+
+山と海が好き
+
+## 2025 年の目標
+
+GR86 を買いたい
