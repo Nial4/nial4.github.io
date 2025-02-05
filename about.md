@@ -4,25 +4,41 @@ title: About
 permalink: /about/
 ---
 
-ねこ好き
+人間です。  
+Nialとは
+```python
+str = "lain"
+reversed_s = str[::-1]
+print(reversed_s)
+```
+Lainというアニメが大好きです
 
-Golang 好き
+## なにが好き
 
-物作り好き
+動物が好き
 
-テックニック好き
+Golangが好き
+
+物作りが好き
 
 釣りが好き
 
 山と海が好き
 
+ロックが好き
+
+ドライブが好き
+
+
 ## 2025 年の目標
 
 - GR86 を買いたい
+- 都心離れて、横浜に引っ越ししたい
+- 稳定的亲密关系
 
 
 ## 最近のプロジェクト
-- http://cosard.nial4.com/
-- https://www.aiiiin.com/
-- 日本語最適化iOSアプリ-Japhrase (開発中)
-- 秘密
+- http://cosard.nial4.com/ (Node.js)
+- https://www.aiiiin.com/ (Python)
+- 日本語最適化iOSアプリ-Japhrase (SwiftUI)
+- 秘密 (Golang)
