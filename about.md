@@ -18,4 +18,11 @@ Golang 好き
 
 ## 2025 年の目標
 
-GR86 を買いたい
+- GR86 を買いたい
+
+
+## 最近のプロジェクト
+- http://cosard.nial4.com/
+- https://www.aiiiin.com/
+- 日本語最適化iOSアプリ-Japhrase (開発中)
+- 秘密
