@@ -168,12 +168,42 @@ WithWorkers(100) // 使用 100 个 worker
 
 ### 我自己的一个实际工作中的设计
 
-我称之为模块化单体微服务，即将一个大的单体应用拆分成多个模块，每个模块都是一个独立的功能，通过 Channel 进行模块之间的通信，每个模块都是一个独立的 goroutine。
+我称之为多级生产者-消费者模式，即将一个大的单体应用拆分成多个模块，每个模块都是生产者和消费者，通过 Channel 进行模块之间的通信，层层传递，每个模块都是一个独立的 goroutine。
 
 之前在开发中遇到了一个 task，需要 5 分钟进行一次，从数据库中拉去信息提交给 FFmpeg 进行处理，本地做 fingerprints，然后提交到云端，最后再保存。本身这个 task 并不难，因为单个 batch 可能数据量很多，要满足 5 分钟一次的话，FFmpeg 的部分可能会出现上一 batch 还没处理完，下一 batch 就来了的情况，所以我将这个 task 拆分成了几个模块。
 
+## 系统架构概览
+
+实现了从直播流中实时识别背景音乐的完整流水线，核心流程包含四个阶段：
+
+1. **直播流获取**：定期从数据库获取直播流信息
+2. **音频提取**：使用 FFmpeg 提取音频片段
+3. **音乐识别**：调用 ACRCloud API 进行识别
+4. **结果存储**：批量存储识别结果到数据库
+
+## 核心并行设计模式
+
+### 1. 多级生产者-消费者模式
+
 ```go
-todo
+// 三级缓冲通道设计
+liveStreamQueue := make(chan m.Live, 500)       // 原始直播流队列
+audioChannel := make(chan m.AudioData, 200)     // 音频数据通道
+recognitionChannel := make(chan m.RecognitionResult, 300) // 识别结果通道
+
+...
+
+func (p *Pipeline) Run(ctx context.Context) {
+    go p.fetchLiveStreams(ctx)
+    // 通过liveStreamQueue传递数据
+    go p.dispatchExtractors(ctx)
+    // 通过audioChannel传递数据
+    go p.dispatchRecognizers(ctx)
+    // 通过recognitionChannel传递数据
+    go p.storeResults(ctx)
+}
+
 ```
 
-....todo
+这种设计模式不同于 errgroup 的简单并行，也不同于 MapReduce 的结构化流程。  
+虽然设计起来稍微有一点点复杂，难点主要在于各个 channel 的 load balance，但是这种设计模式可以很好的将一个大任务拆分成多个小任务，每个小任务都是一个独立的 goroutine，可以很好的利用多核 CPU 的优势，提高整体的处理速度。

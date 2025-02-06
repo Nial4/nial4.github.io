@@ -29,6 +29,6 @@ comments: true
 
 - 在项目下填入训练风格输出文件等就 OK 了
 
-![image](https://raw.githubusercontent.com/Kivior/kivior.github.io/master/img/TF-ns.jpg)
+![image](https://raw.githubusercontent.com/Kivior/kivior.github.io/master/images/TF-ns.jpg)
 
 - 我用蒙娜丽莎做风格样本学习，在对梦露做风格处理，看上去效果一般，也许调教一下小参数会更好，但是笔记本的低压 U 在 iterations 设为 1000 时跑了 6 个小时 emmm...
