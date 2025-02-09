@@ -40,7 +40,8 @@ print(nial[::-1])
 
 ## 最近のプロジェクト
 
-- http://cosard.nial4.com/ (Node.js)
+- https://cosard.nial4.com/ (Node.js)
+- https://magi.nial4.com/ (OpenAI 接続)
 - https://www.aiiiin.com/ (Python)
 - 日本語最適化 iOS アプリ-Japhrase (SwiftUI)
 - 秘密 (Golang)
