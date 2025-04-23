@@ -5,11 +5,11 @@ tags: [golang, promgramming]
 comments: true
 ---
 
-# Go语言 NullString 到反射的设计哲学
-## 理解 database/sql 背后的思考
-
 起因是最近写业务，用到了golang sql库的NullString，虽然以前也不是没用过，但没有仔细研究过这个东西。今天上班比较闲就打开瞅了瞅发现还挺有趣的，做个记录。
 
+Go语言 NullString 到反射的设计哲学
+
+## 理解 database/sql 背后的思考
 ### 1. 为什么有 NullString？
 在 SQL 语言里，NULL 代表「不存在」，
 但 Go 里的 string 不能表达「不存在」，只能是 ""（空字符串）。
