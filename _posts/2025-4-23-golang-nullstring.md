@@ -5,10 +5,19 @@ tags: [golang, promgramming]
 comments: true
 ---
 
-起因是最近写业务，用到了golang sql库的NullString，虽然以前也不是没用过，但没有仔细研究过这个东西。今天上班比较闲就打开瞅了瞅发现还挺有趣的，做个记录。
+我逐渐发现了Golang的设计哲学，就是可以折磨程序员，但不准折磨服务器。</br>
 
-Go语言 NullString 到反射的设计哲学
+我记得前一整子，在跳槽面试的时候，有几个面试官问过我，有没有用过什么ORM，比如GROM？</br>
+我说我不用，我就用sql和sqlx，理由是「goらしくない」“这不像golang”。</br>
 
+大学时代一直是写Java过来的，喜欢把什么语言都写成Java，什么依赖注入，条件反射，一直挂嘴边，但Golang教会了我很多，编程本该如此.jpg</br>
+回到sqlx为什么比gorm“更像golang”？</br>
+
+今天写业务，用到了sql库的NullString，虽然以前也不是没用过，但没有仔细研究过这个东西。</br>
+今天上班比较闲就打开瞅了瞅发现还挺有趣的，做个记录。golang的这些库真的写的特别好懂，建议阅读。</br>
+
+Go语言 NullString 到反射的设计哲学　　
+　　
 ## 理解 database/sql 背后的思考
 ### 1. 为什么有 NullString？
 在 SQL 语言里，NULL 代表「不存在」，
